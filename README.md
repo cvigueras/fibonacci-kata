@@ -1,10 +1,10 @@
 # fibonacci-kata
 It is an infinite sequence of natural numbers
 
-*Fibonacci sequence is defined as:
-  *fib(0) = 0
-  *fib(1) = 1
-  *fib(n) = fib(n-1) + fib(n-2) for n>=2
+* Fibonacci sequence is defined as:
+  * fib(0) = 0
+  * fib(1) = 1
+  * fib(n) = fib(n-1) + fib(n-2) for n>=2
 
 Write a function to generate the Fibonacci number for the nth position.
 
