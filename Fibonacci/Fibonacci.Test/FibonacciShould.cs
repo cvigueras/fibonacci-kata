@@ -12,7 +12,8 @@ namespace Fibonacci.Test
         [Test]
         public void return_exception_when_given_number_is_negative()
         {
-            var action = () => Console.Fibonacci.GetSequence(-1);
+            var fibonacci = new Console.Fibonacci();
+            var action = () => fibonacci.GetSequence(-1);
             
             action.Should().Throw<InvalidDataException>()
                 .WithMessage("Negatives numbers are not allowed");
@@ -21,7 +22,10 @@ namespace Fibonacci.Test
         [Test]
         public void return_zero_when_given_number_is_zero()
         {
-            var result = Console.Fibonacci.GetSequence(0);
+            var fibonacci = new Console.Fibonacci();
+
+            var result = fibonacci.GetSequence(0);
+
             result.Should().Be("0");
         }
     }
