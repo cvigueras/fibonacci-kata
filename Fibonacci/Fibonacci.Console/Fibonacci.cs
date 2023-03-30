@@ -13,6 +13,11 @@ public class Fibonacci
         {
             return "0,1";
         }
+
+        if (number == 2)
+        {
+            return "0,1,1";
+        }
         return "0";
     }
 }
