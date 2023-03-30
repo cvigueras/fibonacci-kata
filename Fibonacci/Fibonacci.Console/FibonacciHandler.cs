@@ -3,10 +3,10 @@ namespace Fibonacci.Console;
 public class FibonacciHandler
 {
     public int Number { get; }
-    public string Succession { get; set; }
+    public string Succession { get; private set; }
     public string Coma { get; }
-    public ulong Actual { get; set; }
-    public ulong Before { get; set; }
+    public ulong Actual { get; private set; }
+    public ulong Before { get; private set; }
 
     private FibonacciHandler(int number)
     {
@@ -22,4 +22,19 @@ public class FibonacciHandler
         return new FibonacciHandler(number);
     }
 
+    public string GetSuccession(int number)
+    {
+        Succession = number == 0
+            ? Before.ToString()
+            : Succession + Before + Coma + Actual;
+        for (var i = 1; i < number; i++)
+        {
+            var sum = Actual + Before;
+            Succession += Coma + sum;
+            Before = Actual;
+            Actual = sum;
+        }
+
+        return Succession;
+    }
 }
