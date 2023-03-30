@@ -14,7 +14,7 @@ namespace Fibonacci.Test
         {
             Action action = () => Fibonacci.GetSequence();
             action.Should().Throw<InvalidDataException>()
-                .WithMessage("Not negatives numbers are allowed");
+                .WithMessage("Negatives numbers are not allowed");
         }
 
     }
@@ -23,7 +23,7 @@ namespace Fibonacci.Test
     {
         public static void GetSequence()
         {
-            throw new NotImplementedException();
+            throw new InvalidDataException("Negatives numbers are not allowed");
         }
     }
 }
