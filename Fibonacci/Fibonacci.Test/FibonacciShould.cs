@@ -4,16 +4,18 @@ namespace Fibonacci.Test
 {
     public class FibonacciShould
     {
+        private Console.Fibonacci _fibonacci;
+
         [SetUp]
         public void Setup()
         {
+            _fibonacci = new Console.Fibonacci();
         }
 
         [Test]
         public void return_exception_when_given_number_is_negative()
         {
-            var fibonacci = new Console.Fibonacci();
-            var action = () => fibonacci.GetSequence(-1);
+            var action = () => _fibonacci.GetSequence(-1);
             
             action.Should().Throw<InvalidDataException>()
                 .WithMessage("Negatives numbers are not allowed");
@@ -22,41 +24,25 @@ namespace Fibonacci.Test
         [Test]
         public void return_zero_when_given_number_is_zero()
         {
-            var fibonacci = new Console.Fibonacci();
-
-            var result = fibonacci.GetSequence(0);
+            var result = _fibonacci.GetSequence(0);
 
             result.Should().Be("0");
         }
 
-        [Test]
-        public void return_string_01_when_given_number_is_one()
+        [TestCase(1, "0,1")]
+        [TestCase(2, "0,1,1")]
+        [TestCase(3, "0,1,1,2")]
+        [TestCase(4, "0,1,1,2,3")]
+        [TestCase(5, "0,1,1,2,3,5")]
+        [TestCase(6, "0,1,1,2,3,5,8")]
+        [TestCase(7, "0,1,1,2,3,5,8,13")]
+        [TestCase(8, "0,1,1,2,3,5,8,13,21")]
+        [TestCase(9, "0,1,1,2,3,5,8,13,21,34")]
+        public void return_sequence_when_given_number_is_greater_than_zero(int input, string expectedResult)
         {
-            var fibonacci = new Console.Fibonacci();
+            var result = _fibonacci.GetSequence(input);
 
-            var result = fibonacci.GetSequence(1);
-
-            result.Should().Be("0,1");
-        }
-
-        [Test]
-        public void return_string_011_when_given_number_is_two()
-        {
-            var fibonacci = new Console.Fibonacci();
-
-            var result = fibonacci.GetSequence(2);
-
-            result.Should().Be("0,1,1");
-        }
-
-        [Test]
-        public void return_string_0112_when_given_number_is_three()
-        {
-            var fibonacci = new Console.Fibonacci();
-
-            var result = fibonacci.GetSequence(3);
-
-            result.Should().Be("0,1,1,2");
+            result.Should().Be(expectedResult);
         }
     }
 }

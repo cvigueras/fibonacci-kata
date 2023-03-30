@@ -2,6 +2,11 @@ namespace Fibonacci.Console;
 
 public class Fibonacci
 {
+    private string _succession = string.Empty;
+    private const string Coma = ",";
+    private ulong _actual = 1;
+    private ulong _before;
+
     public string GetSequence(int number)
     {
         if (number < 0)
@@ -9,20 +14,20 @@ public class Fibonacci
             throw new InvalidDataException("Negatives numbers are not allowed");
         }
 
-        if (number == 1)
+        return GetSuccession(number);
+    }
+
+    private string GetSuccession(int number)
+    {
+        _succession = number == 0 ? _before.ToString() : _succession + _before + Coma + _actual;
+        for(var i = 1;i<number;i++)
         {
-            return "0,1";
+            var sum = _actual + _before;
+            _succession += Coma + sum;
+            _before = _actual;
+            _actual = sum;
         }
 
-        if (number == 2)
-        {
-            return "0,1,1";
-        }
-
-        if (number == 3)
-        {
-            return "0,1,1,2";
-        }
-        return "0";
+        return _succession;
     }
 }
