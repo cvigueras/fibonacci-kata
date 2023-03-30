@@ -54,7 +54,7 @@ namespace Fibonacci.Test
         {
             var fibonacci = new Console.Fibonacci();
 
-            var result = fibonacci.GetSequence(2);
+            var result = fibonacci.GetSequence(3);
 
             result.Should().Be("0,1,1,2");
         }

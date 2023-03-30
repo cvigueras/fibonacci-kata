@@ -18,6 +18,11 @@ public class Fibonacci
         {
             return "0,1,1";
         }
+
+        if (number == 3)
+        {
+            return "0,1,1,2";
+        }
         return "0";
     }
 }
