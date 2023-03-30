@@ -28,5 +28,15 @@ namespace Fibonacci.Test
 
             result.Should().Be("0");
         }
+
+        [Test]
+        public void return_01_when_given_number_is_one()
+        {
+            var fibonacci = new Console.Fibonacci();
+
+            var result = fibonacci.GetSequence(1);
+
+            result.Should().Be("0,1");
+        }
     }
 }
