@@ -1,3 +1,4 @@
+using Fibonacci.Console;
 using FluentAssertions;
 
 namespace Fibonacci.Test
@@ -15,7 +16,7 @@ namespace Fibonacci.Test
         [Test]
         public void return_exception_when_given_number_is_negative()
         {
-            var action = () => _fibonacci.GetSequence(-1);
+            var action = () => _fibonacci.GetSequence(FibonacciHandler.Create(-1));
             
             action.Should().Throw<InvalidDataException>()
                 .WithMessage("Negatives numbers are not allowed");
@@ -24,7 +25,7 @@ namespace Fibonacci.Test
         [Test]
         public void return_zero_when_given_number_is_zero()
         {
-            var result = _fibonacci.GetSequence(0);
+            var result = _fibonacci.GetSequence(FibonacciHandler.Create(0));
 
             result.Should().Be("0");
         }
@@ -40,7 +41,7 @@ namespace Fibonacci.Test
         [TestCase(9, "0,1,1,2,3,5,8,13,21,34")]
         public void return_sequence_when_given_number_is_greater_than_zero(int input, string expectedResult)
         {
-            var result = _fibonacci.GetSequence(input);
+            var result = _fibonacci.GetSequence(FibonacciHandler.Create(input));
 
             result.Should().Be(expectedResult);
         }

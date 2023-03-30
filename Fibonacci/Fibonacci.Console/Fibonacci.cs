@@ -1,33 +1,33 @@
+using System.Runtime.CompilerServices;
+
 namespace Fibonacci.Console;
 
 public class Fibonacci
 {
-    private string _succession = string.Empty;
-    private const string Coma = ",";
-    private ulong _actual = 1;
-    private ulong _before;
 
-    public string GetSequence(int number)
+    public string GetSequence(FibonacciHandler fibonacciHandler)
     {
-        if (number < 0)
+        if (fibonacciHandler.Number < 0)
         {
             throw new InvalidDataException("Negatives numbers are not allowed");
         }
 
-        return GetSuccession(number);
+        return GetSuccession(fibonacciHandler.Number, fibonacciHandler);
     }
 
-    private string GetSuccession(int number)
+    private string GetSuccession(int number, FibonacciHandler fibonacciHandler)
     {
-        _succession = number == 0 ? _before.ToString() : _succession + _before + Coma + _actual;
-        for(var i = 1;i<number;i++)
+        fibonacciHandler.Succession = number == 0
+            ? fibonacciHandler.Before.ToString()
+            : fibonacciHandler.Succession + fibonacciHandler.Before + fibonacciHandler.Coma + fibonacciHandler.Actual;
+        for (var i = 1; i < number; i++)
         {
-            var sum = _actual + _before;
-            _succession += Coma + sum;
-            _before = _actual;
-            _actual = sum;
+            var sum = fibonacciHandler.Actual + fibonacciHandler.Before;
+            fibonacciHandler.Succession += fibonacciHandler.Coma + sum;
+            fibonacciHandler.Before = fibonacciHandler.Actual;
+            fibonacciHandler.Actual = sum;
         }
 
-        return _succession;
+        return fibonacciHandler.Succession;
     }
 }
