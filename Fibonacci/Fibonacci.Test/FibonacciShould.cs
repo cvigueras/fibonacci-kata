@@ -1,3 +1,4 @@
+using Fibonacci.Console;
 using FluentAssertions;
 
 namespace Fibonacci.Test
@@ -12,18 +13,9 @@ namespace Fibonacci.Test
         [Test]
         public void return_exception_when_number_is_negative()
         {
-            Action action = () => Fibonacci.GetSequence();
+            var action = Console.Fibonacci.GetSequence;
             action.Should().Throw<InvalidDataException>()
                 .WithMessage("Negatives numbers are not allowed");
-        }
-
-    }
-
-    public class Fibonacci
-    {
-        public static void GetSequence()
-        {
-            throw new InvalidDataException("Negatives numbers are not allowed");
         }
     }
 }
