@@ -1,10 +1,7 @@
-using System.Runtime.CompilerServices;
-
 namespace Fibonacci.Console;
 
 public class Fibonacci
 {
-
     public string GetSequence(FibonacciHandler fibonacciHandler)
     {
         if (fibonacciHandler.Number < 0)
