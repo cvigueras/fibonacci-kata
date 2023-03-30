@@ -1,4 +1,3 @@
-using Fibonacci.Console;
 using FluentAssertions;
 
 namespace Fibonacci.Test
