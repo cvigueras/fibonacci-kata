@@ -30,13 +30,23 @@ namespace Fibonacci.Test
         }
 
         [Test]
-        public void return_01_when_given_number_is_one()
+        public void return_string_01_when_given_number_is_one()
         {
             var fibonacci = new Console.Fibonacci();
 
             var result = fibonacci.GetSequence(1);
 
             result.Should().Be("0,1");
+        }
+
+        [Test]
+        public void return_string_011_when_given_number_is_two()
+        {
+            var fibonacci = new Console.Fibonacci();
+
+            var result = fibonacci.GetSequence(2);
+
+            result.Should().Be("0,1,1");
         }
     }
 }
